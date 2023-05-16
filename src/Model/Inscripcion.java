@@ -3,51 +3,57 @@ package Model;
 public class Inscripcion {
 
     private int id_Inscripcion;
-
     private double nota;
-
     private Alumno alumno;
-
     private Materia materia;
 
     public Inscripcion(int id_Inscripcion, double nota, Alumno alumno, Materia materia) {
+        this.id_Inscripcion = id_Inscripcion;
+        this.nota = nota;
+        this.alumno = alumno;
+        this.materia = materia;
     }
 
     public Inscripcion(double nota, Alumno alumno, Materia materia) {
+        this.nota = nota;
+        this.alumno = alumno;
+        this.materia = materia;
     }
 
     public Inscripcion() {
     }
 
     public int getId_Inscripcion() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return id_Inscripcion;
     }
 
-    public int setId_Inscripcion(int id_Inscripcion) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setId_Inscripcion(int id_Inscripcion) {
+        this.id_Inscripcion = id_Inscripcion;
     }
 
     public double getNota() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return nota;
     }
 
-    public double setNota(double Nota) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 
     public Alumno getAlumno() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return alumno;
     }
 
-    public Alumno setAlumno(Alumno alumno) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
     public Materia getMateria() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return materia;
     }
 
-    public Materia setMateria(Materia materia) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
+
+    
 }

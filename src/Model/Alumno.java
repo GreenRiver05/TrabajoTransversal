@@ -1,23 +1,31 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Alumno {
 
     private int id_Alumno;
-
     private int dni;
-
     private String nombre;
-
     private String apellido;
-
     private LocalDate nacimiento;
-
     private boolean estado;
 
     public Alumno(int dni, String nombre, String apellido, LocalDate nacimiento, boolean estado) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nacimiento = nacimiento;
+        this.estado = estado;
     }
 
     public Alumno(int id_Alumno, int dni, String nombre, String apellido, LocalDate nacimiento, boolean estado) {
+        this.id_Alumno = id_Alumno;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nacimiento = nacimiento;
+        this.estado = estado;
     }
 
     public Alumno() {
@@ -63,7 +71,7 @@ public class Alumno {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolen getEstado() {
+    public boolean getEstado() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
