@@ -2,7 +2,7 @@ package Model;
 
 public class Inscripcion {
 
-    private int id_Inscripcion;
+    private int id_Inscripcion = -1;
     private double nota;
     private Alumno alumno;
     private Materia materia;

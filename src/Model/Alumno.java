@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Alumno {
 
-    private int id_Alumno;
+    private int id_Alumno = -1;
     private int dni;
     private String nombre;
     private String apellido;
@@ -32,50 +32,57 @@ public class Alumno {
     }
 
     public int getId_Alumno() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return id_Alumno;
     }
 
-    public int setId_Alumno(int id_Alumno) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setId_Alumno(int id_Alumno) {
+        this.id_Alumno = id_Alumno;
     }
 
     public int getDni() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return dni;
     }
 
-    public int setDni(int dni) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return nombre;
     }
 
-    public String setNombre(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getApellido() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return apellido;
     }
 
-    public String setApellido(String apellido) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public LocalDate getNacimiento() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return nacimiento;
     }
 
-    public LocalDate setNacimiento(LocalDate nacimiento) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setNacimiento(LocalDate nacimiento) {
+        this.nacimiento = nacimiento;
     }
 
-    public boolean getEstado() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean isEstado() {
+        return estado;
     }
 
-    public boolean setEstado(boolean estado) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "id_Alumno=" + id_Alumno + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", nacimiento=" + nacimiento + ", estado=" + estado + '}';
+    }
+
+   
 }
