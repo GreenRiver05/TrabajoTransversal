@@ -1,13 +1,13 @@
 package Controlador;
 
 import java.sql.Connection;
-import Model.Alumno;
+import Model.*;
 import java.sql.PreparedStatement;
 import java.sql.Date;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,19 +18,21 @@ public class AlumnoData {
     public AlumnoData() {
         con = Conexion.getConexion();
     }
-    
-    public void guardarAlumno(Alumno alumno){
+
+    public void guardarAlumno(Alumno alumno) {
         String sql = "INSERT INTO alumnos(dni, nombre, apellido, nacimiento, estado) VALUES(?,?,?,?,?)"; ///?? = queda pendiente de carga
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //operaciones de consulta o modificacion
-            //comienzo a llenar los " ? ? ? ? ""
+            //para preparar el sql y completarlo, debemos de usar el "PreparedStatement" 
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //como estamos agregando un alumno agreamos un paremetro para 
+            // decir que esperamo la clave ingresado.
+            //comenzamos a llenar los " ? ? ? ? "
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getNombre());
             ps.setString(3, alumno.getApellido());
-            ps.setDate(4, Date.valueOf(alumno.getNacimiento()));
+            ps.setDate(4, Date.valueOf(alumno.getNacimiento())); // convertimos el LocalDate, en Date , para poder enviarlo
             ps.setBoolean(5, alumno.isEstado());
-            ps.executeUpdate(); // ejecutamos la consulta INSERT
+            ps.executeUpdate(); // ejecutamos la consulta con "executeUpdate" para las consultas del tipo --> INSERT,UPDATE,DELETE
 
             ResultSet rs = ps.getGeneratedKeys();
 
@@ -45,8 +47,9 @@ public class AlumnoData {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void actualizarAlumno(Alumno alumno){
-        String sql = "UPDATE alumnos SET DNI =?,Nombre=?,Apellido=?,Nacimiento=?,Estados=? WHERE idAlumno=?";
+
+    public void actualizarAlumno(Alumno alumno) {
+        String sql = "UPDATE alumnos SET dni=? ,nombre=?, apellido=?, nacimiento=?, estado=? WHERE idAlumno=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -56,15 +59,107 @@ public class AlumnoData {
             ps.setDate(4, Date.valueOf(alumno.getNacimiento()));
             ps.setBoolean(5, alumno.isEstado());
             ps.setInt(6, alumno.getId_Alumno());
+            ps.executeUpdate();
 
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void bajaAlumno(int id) {
+        String sql = "UPDATE alumnos SET estado=? WHERE idAlumno=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, false);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void altaAlumno(int id) {
+
+        String sql = "UPDATE alumnos SET estado=? WHERE idAlumno=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public Alumno buscarAlumno(int id) {
+        String sql = "SELECT idAlumno,dni, nombre, apellido, nacimiento, estado FROM alumnos WHERE idAlumno=?";
+        Alumno alumno = null;
+
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                alumno = new Alumno();
+                alumno.setId_Alumno(rs.getInt(1));
+                alumno.setDni(rs.getInt(2));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNacimiento(rs.getDate("nacimiento").toLocalDate());
+                alumno.setEstado(rs.getBoolean("estado"));
+            } else {
+                System.out.println("Alumno Inexistente");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return alumno;
+
+    }
+
+    public void buscarAlumnos(boolean estado, Map misAlumnos) {
+
+        String sql = "SELECT* FROM alumnos WHERE estado =? ORDER BY nombre";
+
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setBoolean(1, estado);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                System.out.println("No se encontraron alumnos con el estado " + estado);
+            } else {
+                do {
+                    Alumno alumno = new Alumno();
+                    alumno.setId_Alumno(rs.getInt("idAlumno"));
+                    alumno.setDni(rs.getInt("dni"));
+                    alumno.setNombre(rs.getString("nombre"));
+                    alumno.setApellido(rs.getString("apellido"));
+                    alumno.setNacimiento(rs.getDate("nacimiento").toLocalDate());
+                    alumno.setEstado(rs.getBoolean("estado"));
+                    misAlumnos.put(alumno.getId_Alumno(), alumno);
+
+                } while (rs.next());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
 
 ////ex.getMessage
+
 //guardar 
 //dar de baja o habilitar alumno
 //buscar alumno
