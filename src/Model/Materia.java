@@ -55,4 +55,15 @@ public class Materia {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+
+        if (estado == true) {
+            return "\n          " + nombre + "\nAño: " + anio + " ID: " + id_Materia + "   ACTIVO";
+        } else {
+            return "\n          " + nombre + "\nAño: " + anio + " ID: " + id_Materia + "   INACTIVO";
+        }
+
+    }
+
 }
