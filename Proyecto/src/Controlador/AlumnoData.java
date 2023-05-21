@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class AlumnoData {
 
@@ -38,13 +39,14 @@ public class AlumnoData {
 
             if (rs.next()) { // obtenemos el ID
                 alumno.setId_Alumno(rs.getInt(1)); // Posicion en la tabla, o bien podemos poner el string el nombre de la columna
+                JOptionPane.showMessageDialog(null, "Alumno añadido con exito.");
             } else {
-                System.out.println("no agregado");
+                System.out.println("Alumno no agregado");
             }
             ps.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
         }
     }
 
@@ -59,40 +61,47 @@ public class AlumnoData {
             ps.setDate(4, Date.valueOf(alumno.getNacimiento()));
             ps.setBoolean(5, alumno.isEstado());
             ps.setInt(6, alumno.getId_Alumno());
-            ps.executeUpdate();
-
+            if (ps.executeUpdate() == 1) {
+                JOptionPane.showMessageDialog(null, "Estudiante modificado exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Estudiante no existe o no se Modifico");
+            }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
         }
     }
 
     public void bajaAlumno(int id) {
-        String sql = "UPDATE alumnos SET estado=? WHERE idAlumno=?";
+        String sql = "UPDATE alumnos SET estado=0 WHERE idAlumno=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setBoolean(1, false);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-
+            ps.setInt(1, id);
+            if (ps.executeUpdate() == 1) {
+                JOptionPane.showMessageDialog(null, "Baja Realizada.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo efectuar la Baja");
+            }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
         }
     }
 
     public void altaAlumno(int id) {
 
-        String sql = "UPDATE alumnos SET estado=? WHERE idAlumno=?";
+        String sql = "UPDATE alumnos SET estado=1 WHERE idAlumno=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setBoolean(1, true);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-
+            ps.setInt(1, id);
+            if (ps.executeUpdate() == 1) {
+                JOptionPane.showMessageDialog(null, "Alta Realizada.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo efectuar la Alta");
+            }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
         }
 
     }
@@ -115,11 +124,11 @@ public class AlumnoData {
                 alumno.setNacimiento(rs.getDate("nacimiento").toLocalDate());
                 alumno.setEstado(rs.getBoolean("estado"));
             } else {
-                System.out.println("Alumno Inexistente");
+                JOptionPane.showMessageDialog(null, "Alumno Inexistente");
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
         }
 
         return alumno;
@@ -136,7 +145,7 @@ public class AlumnoData {
             ps.setBoolean(1, estado);
             ResultSet rs = ps.executeQuery();
             if (!rs.next()) {
-                System.out.println("No se encontraron alumnos con el estado " + estado);
+                JOptionPane.showMessageDialog(null, "No se encontraron alumnos con el estado " + estado);
             } else {
                 do {
                     Alumno alumno = new Alumno();
@@ -152,14 +161,13 @@ public class AlumnoData {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
         }
 
     }
 }
 
 ////ex.getMessage
-
 //guardar 
 //dar de baja o habilitar alumno
 //buscar alumno
