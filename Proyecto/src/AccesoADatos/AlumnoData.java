@@ -1,4 +1,4 @@
-package Controlador;
+package AccesoADatos;
 
 import java.sql.Connection;
 import Model.*;
@@ -7,9 +7,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class AlumnoData {
@@ -20,7 +18,7 @@ public class AlumnoData {
         con = Conexion.getConexion();
     }
 
-    public void guardarAlumno(Alumno alumno) {
+    public void guardarAlumno(Alumno alumno) { //FUNCA
         String sql = "INSERT INTO alumnos(dni, nombre, apellido, nacimiento, estado) VALUES(?,?,?,?,?)"; ///?? = queda pendiente de carga
 
         try {
@@ -41,7 +39,7 @@ public class AlumnoData {
                 alumno.setId_Alumno(rs.getInt(1)); // Posicion en la tabla, o bien podemos poner el string el nombre de la columna
                 JOptionPane.showMessageDialog(null, "Alumno añadido con exito.");
             } else {
-                System.out.println("Alumno no agregado");
+                JOptionPane.showMessageDialog(null, "Alumno no Agregado.");
             }
             ps.close();
 
@@ -50,63 +48,7 @@ public class AlumnoData {
         }
     }
 
-    public void actualizarAlumno(Alumno alumno) {
-        String sql = "UPDATE alumnos SET dni=? ,nombre=?, apellido=?, nacimiento=?, estado=? WHERE idAlumno=?";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, alumno.getDni());
-            ps.setString(2, alumno.getNombre());
-            ps.setString(3, alumno.getApellido());
-            ps.setDate(4, Date.valueOf(alumno.getNacimiento()));
-            ps.setBoolean(5, alumno.isEstado());
-            ps.setInt(6, alumno.getId_Alumno());
-            if (ps.executeUpdate() == 1) {
-                JOptionPane.showMessageDialog(null, "Estudiante modificado exitosamente.");
-            } else {
-                JOptionPane.showMessageDialog(null, "Estudiante no existe o no se Modifico");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
-        }
-    }
-
-    public void bajaAlumno(int id) {
-        String sql = "UPDATE alumnos SET estado=0 WHERE idAlumno=?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            if (ps.executeUpdate() == 1) {
-                JOptionPane.showMessageDialog(null, "Baja Realizada.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo efectuar la Baja");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
-        }
-    }
-
-    public void altaAlumno(int id) {
-
-        String sql = "UPDATE alumnos SET estado=1 WHERE idAlumno=?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            if (ps.executeUpdate() == 1) {
-                JOptionPane.showMessageDialog(null, "Alta Realizada.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo efectuar la Alta");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
-        }
-
-    }
-
-    public Alumno buscarAlumno(int id) {
+    public Alumno buscarAlumno(int id) {//FUNCA
         String sql = "SELECT idAlumno,dni, nombre, apellido, nacimiento, estado FROM alumnos WHERE idAlumno=?";
         Alumno alumno = null;
 
@@ -135,8 +77,37 @@ public class AlumnoData {
 
     }
 
-    public void buscarAlumnos(boolean estado, Map misAlumnos) {
+    public Alumno buscarAlumnoDNI(int dni) {//FUNCA
 
+        String sql = "SELECT idAlumno,dni, nombre, apellido, nacimiento, estado FROM alumnos WHERE dni=?";
+        Alumno alumno = null;
+
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                alumno = new Alumno();
+                alumno.setId_Alumno(rs.getInt(1));
+                alumno.setDni(rs.getInt(2));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNacimiento(rs.getDate("nacimiento").toLocalDate());
+                alumno.setEstado(rs.getBoolean("estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Alumno Inexistente");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
+        }
+
+        return alumno;
+    }
+
+    public ArrayList<Alumno> listarAlumnos(boolean estado) {//FUNCA
+        ArrayList<Alumno> misAlumnos = new ArrayList();
         String sql = "SELECT* FROM alumnos WHERE estado =? ORDER BY nombre";
 
         PreparedStatement ps;
@@ -155,20 +126,78 @@ public class AlumnoData {
                     alumno.setApellido(rs.getString("apellido"));
                     alumno.setNacimiento(rs.getDate("nacimiento").toLocalDate());
                     alumno.setEstado(rs.getBoolean("estado"));
-                    misAlumnos.put(alumno.getId_Alumno(), alumno);
+                    misAlumnos.add(alumno);
 
                 } while (rs.next());
+
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
         }
+        return misAlumnos;
 
     }
+
+    public void modificarAlumno(Alumno alumno) {//FUNCA
+        String sql = "UPDATE alumnos SET dni=? ,nombre=?, apellido=?, nacimiento=?, estado=? WHERE idAlumno=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getNombre());
+            ps.setString(3, alumno.getApellido());
+            ps.setDate(4, Date.valueOf(alumno.getNacimiento()));
+            ps.setBoolean(5, alumno.isEstado());
+            ps.setInt(6, alumno.getId_Alumno());
+            if (ps.executeUpdate() == 1) {
+                JOptionPane.showMessageDialog(null, "Estudiante modificado exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Estudiante no existe");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
+        }
+    }
+
+    public void bajaAlumno(int id) {//FUNCA
+        String sql = "UPDATE alumnos SET estado=0 WHERE idAlumno=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            if (ps.executeUpdate() == 1) {
+                JOptionPane.showMessageDialog(null, "Baja Realizada.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe Alumno con ese ID");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
+        }
+    }
+
+    public void altaAlumno(int id) {//FUNCA
+
+        String sql = "UPDATE alumnos SET estado=1 WHERE idAlumno=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            if (ps.executeUpdate() == 1) {
+                JOptionPane.showMessageDialog(null, "Alta Realizada.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe Alumno con ese ID");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
+        }
+
+    }
+
 }
 
 ////ex.getMessage
-
 //guardar 
 //dar de baja o habilitar alumno
 //buscar alumno

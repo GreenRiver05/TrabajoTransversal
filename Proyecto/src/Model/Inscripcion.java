@@ -56,9 +56,20 @@ public class Inscripcion {
     }
 
     @Override
-    public String toString() {
-        return "Inscripcion{" + "id_Inscripcion=" + id_Inscripcion + ", nota=" + nota + ", alumno=" + alumno+ ", materia=" + materia + '}';
+    public String toString() {//obtenerInscripciones()....  obtenerInscripcionesPorAlumno()
+        return "id_Inscripcion: " + id_Inscripcion + ", Nota: " + nota + ", id_Alumno: " + alumno.getId_Alumno() + ", id_Materia: " + materia.getId_Materia();
     }
 
-    
+    public String toString1() {//obtenerMateriasCursadas()
+        return "Nombre y apellido: " + alumno.getNombre() + " " + alumno.getApellido()
+                + ", Materia: " + materia.getNombre() + ", Año: " + materia.getAnio() + "Nota: " + nota;
+    }
+
+    public String toString2() {//obtenerMateriasNoCursadas()
+        return materia.getNombre() + " Año: " + materia.getAnio();
+    }
+    public String toString3(){//obtenerAlumnosXMateria()
+        return alumno.getApellido() + " " + alumno.getNombre() + " Nota: " + nota;
+                
+     }
 }
