@@ -84,8 +84,15 @@ public class InscripcionData {
     }
 
     public ArrayList<Inscripcion> buscarInscripcionAlumno(int id) {
+        Inscripcion inscripcion = null;
+        Alumno alumno = null;
+        Materia materia = null;
         ArrayList<Inscripcion> misInscripciones = new ArrayList();
-        String sql = "SELECT * FROM inscripciones WHERE idAlumnos=?";//idinscriopcion
+        String sql = "SELECT idInscripcion, inscripciones.idAlumnos, inscripciones.idMaterias, nota\n"
+                + "FROM alumnos, materias, inscripciones\n"
+                + "WHERE alumnos.IdAlumno = inscripciones.idAlumnos\n"
+                + "AND materias.idMaterias = inscripciones.idMaterias\n"
+                + "AND alumnos.IdAlumno =?";//idinscriopcion
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -95,8 +102,13 @@ public class InscripcionData {
                 System.out.println("No hay inscripciones con ese IdAlumno");
             } else {
                 do {
-                    Inscripcion inscripcion = new Inscripcion();
+                    inscripcion = new Inscripcion();
+                    alumno = new Alumno();
+                    materia = new Materia();
+                    
                     inscripcion.setId_Inscripcion(rs.getInt("idInscripcion"));
+                    alumno.setId_Alumno(id);
+                    materia.setId_Materia(rs.getInt("idMaterias"));
                     inscripcion.setNota(rs.getInt("nota"));//idalumno y idmateria
                     misInscripciones.add(inscripcion);
 
