@@ -126,7 +126,8 @@ public class InscripcionData {
         Alumno alumno = null;
         Materia materia = null;
         ArrayList<Inscripcion> materiasInscriptas = new ArrayList();
-        String sql = "SELECT alumnos.Nombre,alumnos.apellido, materias.Nombre,  materias.Año, nota\n"
+        String sql = "SELECT alumnos.Nombre,alumnos.apellido, materias.Nombre,  materias.Año, nota,"
+                + " materias.idMaterias, inscripciones.idInscripcion\n"
                 + "FROM alumnos, materias, inscripciones\n"
                 + "WHERE alumnos.IdAlumno = inscripciones.idAlumnos\n"
                 + "AND materias.idMaterias = inscripciones.idMaterias\n"
@@ -149,6 +150,8 @@ public class InscripcionData {
                     materia.setNombre(rs.getString(3));
                     materia.setAnio(rs.getInt(4));
                     inscripcion.setNota(rs.getInt("nota"));//idalumno y idmateria
+                    materia.setId_Materia(rs.getInt(6));
+                    inscripcion.setId_Inscripcion(rs.getInt(7));
                     inscripcion.setAlumno(alumno);
                     inscripcion.setMateria(materia);
                     materiasInscriptas.add(inscripcion);
@@ -166,7 +169,7 @@ public class InscripcionData {
         Alumno alumno = null;
         Materia materia = null;
         ArrayList<Inscripcion> materiasNoInscriptas = new ArrayList();
-        String sql = "SELECT alumnos.nombre, alumnos.apellido, materias.nombre, materias.año\n"
+        String sql = "SELECT alumnos.nombre, alumnos.apellido, materias.nombre, materias.año, materias.idMaterias\n"
                 + "FROM materias, alumnos\n"
                 + "WHERE idMaterias NOT IN ( \n"
                 + "    	SELECT materias.idMaterias\n"
@@ -190,6 +193,7 @@ public class InscripcionData {
                     alumno.setApellido(rs.getString(2));
                     materia.setNombre(rs.getString(3));
                     materia.setAnio(rs.getInt(4));
+                    materia.setId_Materia(rs.getInt(5));
                     inscripcion.setAlumno(alumno);
                     inscripcion.setMateria(materia);
                     materiasNoInscriptas.add(inscripcion);

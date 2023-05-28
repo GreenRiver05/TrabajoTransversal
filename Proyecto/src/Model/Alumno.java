@@ -79,13 +79,17 @@ public class Alumno {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
+    public String toString1() {
         if (estado == true) {
             return "\n          " + nombre + " " + apellido + "\nFecNac: " + nacimiento + "  DNI: " + dni + "   ID: " + id_Alumno + "   ACTIVO";
-        }else{
+        } else {
             return "\n          " + nombre + " " + apellido + "\nFecNac: " + nacimiento + "  DNI: " + dni + "   ID: " + id_Alumno + "   INACTIVO";
         }
+    }
+
+    public String toString() {
+        return  id_Alumno + " - " + nombre + " " + apellido;
+
     }
 
 }

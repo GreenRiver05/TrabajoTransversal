@@ -23,19 +23,19 @@ public class Universidad {
 
 //................ BUSCAR ALUMNO ................  FUNCA
 //        AlumnoData ad = new AlumnoData();
-//        System.out.println("Estudiante : " + ad.buscarAlumno(50));
+//        System.out.println("Estudiante : " + ad.buscarAlumno(1).toString1());
 
 
 //................ BUSCAR ALUMNO POR DNI ................  FUNCA
 //        AlumnoData ad = new AlumnoData();
-//        System.out.println("Estudiante : " + ad.buscarAlumnoDNI(38554946));
+//        System.out.println("Estudiante : " + ad.buscarAlumnoDNI(38554946).toString1());
 
 
 //................ LISTAR ALUMNOS ................   FUNCA
-///        AlumnoData ad = new AlumnoData();
+//       AlumnoData ad = new AlumnoData();
 //        System.out.println("ESTUDIANTES:");
-//        for (Alumno alum : ad.listarAlumnos(false)) {
-//            System.out.println(alum);
+//     for (Alumno alum : ad.listarAlumnos(false)) {
+//          System.out.println(alum.toString1());
 //        }
 
 
