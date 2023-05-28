@@ -402,16 +402,3 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
 }
-////String valor = " [0-9]* ";
-//if (!textField.getText().matches(val){
-//mensaje = " ingrese numeros"
-//focus en el textField
-//}
-//
-//if(textField.getText().length()==0){
-//mensaje = " ingrese datos validos";
-//focus en el textField
-//
-//comboBox ( CATEGORIAS ) alum.SetInscripcion((Alumno)jcomboAlumno.getSelectidem());
-
-
