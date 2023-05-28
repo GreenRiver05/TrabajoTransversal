@@ -57,6 +57,12 @@ public class Materia {
 
     @Override
     public String toString() {
+        return  nombre + " - " + anio + "° Año";
+    }
+
+    
+    
+    public String toString1() {
 
         if (estado == true) {
             return "\n          " + nombre + "\nAño: " + anio + " ID: " + id_Materia + "   ACTIVO";

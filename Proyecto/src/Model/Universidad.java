@@ -63,7 +63,7 @@ public class Universidad {
 
 //................ BUSCAR MATERIA ................ FUNCA
 //        MateriaData md = new MateriaData();
-//        System.out.println("Materia : " + md.buscarMateria(89));
+//        System.out.println("Materia : " + md.buscarMateria(89).toString1());
 
 
 //................ MODIFICAR MATERIA ................ FUNCA
@@ -84,7 +84,7 @@ public class Universidad {
 //................ LISTAR MATERIAS ................ FUNCA
 //       MateriaData md = new MateriaData();
 //       for (Materia mat : md.listarMaterias(true)) {
-//            System.out.println(mat);
+//            System.out.println(mat.toString1());
 //        }
 
 ////--------------------------------------------------------------- INSCRIPCION --------------------------------------------------------------- 

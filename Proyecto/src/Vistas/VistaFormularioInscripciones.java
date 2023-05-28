@@ -16,7 +16,6 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
     private MateriaData matData = new MateriaData();
     private ArrayList<Inscripcion> listaInscripto = new ArrayList();
     private ArrayList<Inscripcion> listaNoInscripto = new ArrayList();
-    private ArrayList<Materia> listaMaterias = new ArrayList();
     private ArrayList<Alumno> listaAlumnos = new ArrayList();
 
     private void llenarComboBox() {
@@ -36,7 +35,7 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
         }
         jTable1.setModel(modeloTabla);
 
-                
+          
         //ocultamos una columna para no mostrar el id, ya que al usuario no le interesa
         TableColumn columna = jTable1.getColumnModel().getColumn(0);
         columna.setMaxWidth(0);
@@ -77,7 +76,6 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
         modeloTabla = new DefaultTableModel();
         inscripcion = new Inscripcion();
         materia = new Materia();
-        listaMaterias = matData.listarMaterias(true);
         listaAlumnos = alumData.listarAlumnos(true);
         armarCabecera();
         borrarFilas();

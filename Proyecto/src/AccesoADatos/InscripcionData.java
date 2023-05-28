@@ -251,7 +251,7 @@ public class InscripcionData {
         Alumno alumno = null;
         Materia materia = null;
         ArrayList<Inscripcion> alumnosXMateria = new ArrayList();
-        String sql = "SELECT materias.Nombre, materias.Año, alumnos.apellido, alumnos.Nombre, nota\n"
+        String sql = "SELECT materias.Nombre, materias.Año,alumnos.idAlumno, alumnos.apellido, alumnos.Nombre, nota\n"
                 + "FROM alumnos, materias, inscripciones\n"
                 + "WHERE alumnos.IdAlumno = inscripciones.idAlumnos\n"
                 + "AND materias.idMaterias = inscripciones.idMaterias\n"
@@ -270,9 +270,10 @@ public class InscripcionData {
                     materia = new Materia();
                     materia.setNombre(rs.getString(1));
                     materia.setAnio(rs.getInt(2));
-                    alumno.setApellido(rs.getString(3));
-                    alumno.setNombre(rs.getString(4));
-                    inscripcion.setNota(rs.getInt(5));
+                    alumno.setId_Alumno(rs.getInt(3));
+                    alumno.setApellido(rs.getString(4));
+                    alumno.setNombre(rs.getString(5));
+                    inscripcion.setNota(rs.getInt(6));
                     inscripcion.setAlumno(alumno);
                     inscripcion.setMateria(materia);
                     alumnosXMateria.add(inscripcion);
