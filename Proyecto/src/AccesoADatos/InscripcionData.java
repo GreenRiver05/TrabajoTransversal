@@ -226,7 +226,7 @@ public class InscripcionData {
         
     }
     
-    public void actualizarNota(int nota, int id) { //FUNCA
+    public void actualizarNota(double nota, int id) { //FUNCA
         String sql = "UPDATE  inscripciones  SET  Nota =? WHERE idInscripcion =?";
         
         try {

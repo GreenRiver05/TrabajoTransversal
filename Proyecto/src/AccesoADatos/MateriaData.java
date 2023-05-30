@@ -134,7 +134,7 @@ public class MateriaData {
 
     public ArrayList<Materia> listarMaterias(boolean estado) { //FUNCA
         ArrayList<Materia> misMaterias = new ArrayList();
-        String sql = "SELECT* FROM materias WHERE estado =?";
+        String sql = "SELECT* FROM materias WHERE estado =? ORDER BY año";
 
         PreparedStatement ps;
         try {

@@ -108,7 +108,7 @@ public class AlumnoData {
 
     public ArrayList<Alumno> listarAlumnos(boolean estado) {//FUNCA
         ArrayList<Alumno> misAlumnos = new ArrayList();
-        String sql = "SELECT* FROM alumnos WHERE estado =? ORDER BY nombre";
+        String sql = "SELECT* FROM alumnos WHERE estado =? ORDER BY apellido";
 
         PreparedStatement ps;
         try {
