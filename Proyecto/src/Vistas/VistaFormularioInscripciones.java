@@ -116,11 +116,6 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
         jcbAlumnos.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jcbAlumnos.setForeground(new java.awt.Color(255, 255, 255));
         jcbAlumnos.setMaximumRowCount(10);
-        jcbAlumnos.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jcbAlumnosItemStateChanged(evt);
-            }
-        });
         jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbAlumnosActionPerformed(evt);
@@ -347,10 +342,6 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jSalir3ActionPerformed
 
-    private void jcbAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnosItemStateChanged
-        llenarTabla();
-    }//GEN-LAST:event_jcbAlumnosItemStateChanged
-
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         int filaElegida = jTable1.getSelectedRow();
         int idMateria = (Integer) jTable1.getValueAt(filaElegida, 1);
@@ -368,9 +359,13 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if (jrbInscripto.isSelected() == true) {
             jbAnularInscripcion.setEnabled(true);
+
+            jbInscribir.setEnabled(false);
         }
         if (jrbNoInscripto.isSelected() == true) {
             jbInscribir.setEnabled(true);
+            jbAnularInscripcion.setEnabled(false);
+
         }
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -382,7 +377,7 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
 
     private void jrbNoInscriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoInscriptoActionPerformed
         jrbInscripto.setSelected(false);
-        
+
         llenarTabla();
     }//GEN-LAST:event_jrbNoInscriptoActionPerformed
 

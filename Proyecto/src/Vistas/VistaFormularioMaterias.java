@@ -39,7 +39,7 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 700));
 
-        jtCodigo.setBackground(new java.awt.Color(102, 102, 102));
+        jtCodigo.setBackground(new java.awt.Color(51, 51, 51));
         jtCodigo.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtCodigo.setForeground(new java.awt.Color(255, 255, 255));
         jtCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -54,13 +54,8 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
                 jtCodigoFocusLost(evt);
             }
         });
-        jtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtCodigoActionPerformed(evt);
-            }
-        });
 
-        jtNombre.setBackground(new java.awt.Color(102, 102, 102));
+        jtNombre.setBackground(new java.awt.Color(51, 51, 51));
         jtNombre.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtNombre.setForeground(new java.awt.Color(255, 255, 255));
         jtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -69,21 +64,12 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jtNombreFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtNombreFocusLost(evt);
-            }
-        });
-        jtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtNombreActionPerformed(evt);
-            }
         });
 
         jlAño.setBackground(new java.awt.Color(51, 51, 51));
         jlAño.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jlAño.setForeground(new java.awt.Color(255, 255, 255));
         jlAño.setText("AÑO");
-        jlAño.setEnabled(false);
         jlAño.setPreferredSize(new java.awt.Dimension(70, 40));
 
         jbRegistrar.setBackground(new java.awt.Color(51, 51, 51));
@@ -142,7 +128,7 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Formulario de Materias");
+        jLabel1.setText("FORMULARIO DE MATERIAS");
 
         jtAño.setFont(new java.awt.Font("Century Gothic", 0, 29)); // NOI18N
 
@@ -150,9 +136,13 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ESTADO");
 
+        jcbActivo.setBackground(new java.awt.Color(51, 51, 51));
+        jcbActivo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jcbActivo.setForeground(new java.awt.Color(255, 255, 255));
         jcbActivo.setText("ACTIVO");
 
+        jcbInactivo.setBackground(new java.awt.Color(51, 51, 51));
+        jcbInactivo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jcbInactivo.setForeground(new java.awt.Color(255, 255, 255));
         jcbInactivo.setText("INACTIVO");
 
@@ -265,7 +255,7 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
                     .addComponent(jcbInactivo))
                 .addGap(56, 56, 56)
                 .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,16 +287,20 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
             MateriaData data = new MateriaData();
             Materia materia = new Materia();
             materia = data.buscarMateria(codigo);
-            jtNombre.setText(materia.getNombre());
-            jtAño.setText(materia.getAnio() + "");
+            if(materia!= null){
+                
+                jtNombre.setText(materia.getNombre());
+                jtAño.setText(materia.getAnio() + "");
 
-            if (materia.isEstado() == true) {
-                jcbActivo.setSelected(true);
-                jbEstado.setText("Dar de Baja");
-            } else {
-                jcbInactivo.setSelected(true);
-                jbEstado.setText("Dar de Alta");
+                if (materia.isEstado() == true) {
+                    jcbActivo.setSelected(true);
+                    jbEstado.setText("Dar de Baja");
+                } else {
+                    jcbInactivo.setSelected(true);
+                    jbEstado.setText("Dar de Alta");
+                }
             }
+            
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese un Valor Numerico para el Año");
@@ -348,28 +342,17 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
-    private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
-
-    }//GEN-LAST:event_jtNombreActionPerformed
-
-    private void jtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNombreFocusLost
-
-    }//GEN-LAST:event_jtNombreFocusLost
-
     private void jtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNombreFocusGained
-
+        if (jtNombre.getText().equals("NOMBRE:")) {
+            jtNombre.setText("");
+        }
     }//GEN-LAST:event_jtNombreFocusGained
 
-    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
-
-    }//GEN-LAST:event_jtCodigoActionPerformed
-
-    private void jtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtCodigoFocusLost
-
-    }//GEN-LAST:event_jtCodigoFocusLost
-
     private void jtCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtCodigoFocusGained
-
+        if (jtCodigo.getText().equals("CODIGO:")) {
+            jtCodigo.setText("");
+            jbBuscar.setEnabled(true);
+        } 
     }//GEN-LAST:event_jtCodigoFocusGained
 
     private void jbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEstadoActionPerformed
@@ -401,7 +384,7 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
             } else if (jcbInactivo.isSelected() == false) {
                 estado = false;
             }
-            Materia materia = new Materia(id,nombre, año, estado);
+            Materia materia = new Materia(id, nombre, año, estado);
             MateriaData data = new MateriaData();
             data.modificarMateria(materia);
 
@@ -409,6 +392,13 @@ public class VistaFormularioMaterias extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Por favor ingrese un Valor Numerico para el Año");
         }
     }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtCodigoFocusLost
+        if (jtCodigo.getText().equals("")) {
+            jtCodigo.setText("CODIGO:");
+            jbBuscar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jtCodigoFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

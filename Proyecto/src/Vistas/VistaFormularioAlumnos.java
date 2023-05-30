@@ -48,12 +48,22 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         jtNombre.setForeground(new java.awt.Color(255, 255, 255));
         jtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtNombre.setText("NOMBRE:");
+        jtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtNombreFocusGained(evt);
+            }
+        });
 
         jtApellido.setBackground(new java.awt.Color(51, 51, 51));
         jtApellido.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtApellido.setForeground(new java.awt.Color(255, 255, 255));
         jtApellido.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtApellido.setText("APELLIDO:");
+        jtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtApellidoFocusGained(evt);
+            }
+        });
 
         jbBuscar.setBackground(new java.awt.Color(51, 51, 51));
         jbBuscar.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
@@ -85,6 +95,11 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         jtDni.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtDni.setForeground(new java.awt.Color(255, 255, 255));
         jtDni.setText("DNI:");
+        jtDni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtDniFocusGained(evt);
+            }
+        });
 
         CALENDARIO.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         CALENDARIO.setForeground(new java.awt.Color(255, 255, 255));
@@ -222,7 +237,7 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(jlNuevoLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtDni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,7 +254,7 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(jcbActivo)
                     .addComponent(jcbInactivo)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -254,14 +269,11 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -380,6 +392,24 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_jbRegistrarActionPerformed
+
+    private void jtDniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDniFocusGained
+        if(jtDni.getText().equals("DNI:")){
+            jtDni.setText("");
+        }
+    }//GEN-LAST:event_jtDniFocusGained
+
+    private void jtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNombreFocusGained
+        if(jtNombre.getText().equals("NOMBRE:")){
+            jtNombre.setText("");
+        }
+    }//GEN-LAST:event_jtNombreFocusGained
+
+    private void jtApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtApellidoFocusGained
+         if(jtApellido.getText().equals("APELLIDO:")){
+            jtApellido.setText("");
+        }
+    }//GEN-LAST:event_jtApellidoFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
