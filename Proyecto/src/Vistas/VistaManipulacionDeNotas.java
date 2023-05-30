@@ -165,6 +165,7 @@ public class VistaManipulacionDeNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 28)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ALUMNO");
 
         jbActualizar.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
@@ -194,15 +195,18 @@ public class VistaManipulacionDeNotas extends javax.swing.JInternalFrame {
         });
 
         jlMensaje1.setBackground(new java.awt.Color(255, 255, 255));
+        jlMensaje1.setForeground(new java.awt.Color(255, 255, 255));
         jlMensaje1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jlMensaje1.setText("Ingrese nota nueva y");
 
         jlMensaje.setBackground(new java.awt.Color(255, 255, 255));
+        jlMensaje.setForeground(new java.awt.Color(255, 255, 255));
         jlMensaje.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jlMensaje.setText("Presione Enter");
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 28)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("NOTA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

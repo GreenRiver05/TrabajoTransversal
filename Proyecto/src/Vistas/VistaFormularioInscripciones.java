@@ -241,7 +241,7 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(3);
         }
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 28)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ALUMNO ");
 
@@ -382,12 +382,15 @@ public class VistaFormularioInscripciones extends javax.swing.JInternalFrame {
 
     private void jrbNoInscriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoInscriptoActionPerformed
         jrbInscripto.setSelected(false);
+        
         llenarTabla();
     }//GEN-LAST:event_jrbNoInscriptoActionPerformed
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
         jrbInscripto.setSelected(false);
         jrbNoInscripto.setSelected(false);
+        jbAnularInscripcion.setEnabled(false);
+        jbInscribir.setEnabled(false);
         borrarFilas();
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 

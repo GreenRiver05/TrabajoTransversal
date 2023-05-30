@@ -44,19 +44,19 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 700));
 
         jtNombre.setBackground(new java.awt.Color(51, 51, 51));
-        jtNombre.setFont(new java.awt.Font("Castellar", 1, 29)); // NOI18N
+        jtNombre.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtNombre.setForeground(new java.awt.Color(255, 255, 255));
         jtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtNombre.setText("NOMBRE:");
 
         jtApellido.setBackground(new java.awt.Color(51, 51, 51));
-        jtApellido.setFont(new java.awt.Font("Castellar", 1, 29)); // NOI18N
+        jtApellido.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtApellido.setForeground(new java.awt.Color(255, 255, 255));
         jtApellido.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtApellido.setText("APELLIDO:");
 
         jbBuscar.setBackground(new java.awt.Color(51, 51, 51));
-        jbBuscar.setFont(new java.awt.Font("Castellar", 1, 14)); // NOI18N
+        jbBuscar.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jbBuscar.setText("BUSCAR");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,27 +69,28 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         jlNuevoLegajo.setForeground(new java.awt.Color(255, 0, 0));
 
         jtLegajo.setBackground(new java.awt.Color(51, 51, 51));
-        jtLegajo.setFont(new java.awt.Font("Castellar", 1, 29)); // NOI18N
+        jtLegajo.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtLegajo.setForeground(new java.awt.Color(255, 255, 255));
         jtLegajo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtLegajo.setText("LEGAJO");
         jtLegajo.setEnabled(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setFont(new java.awt.Font("Castellar", 0, 40)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Formulario de Alumnos");
+        jLabel1.setText("FORMULARIO DE ALUMNOS");
 
         jtDni.setBackground(new java.awt.Color(51, 51, 51));
-        jtDni.setFont(new java.awt.Font("Dialog", 0, 29)); // NOI18N
+        jtDni.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jtDni.setForeground(new java.awt.Color(255, 255, 255));
         jtDni.setText("DNI:");
 
+        CALENDARIO.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         CALENDARIO.setForeground(new java.awt.Color(255, 255, 255));
         CALENDARIO.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
-        jlNacimiento.setFont(new java.awt.Font("Dialog", 1, 29)); // NOI18N
+        jlNacimiento.setFont(new java.awt.Font("Century Gothic", 1, 29)); // NOI18N
         jlNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         jlNacimiento.setText("FECHA DE NACIMIENTO:");
 
@@ -104,7 +105,7 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         jLabel3.setText("ESTADO");
 
         jbNuevo.setBackground(new java.awt.Color(51, 51, 51));
-        jbNuevo.setFont(new java.awt.Font("Castellar", 1, 17)); // NOI18N
+        jbNuevo.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jbNuevo.setForeground(new java.awt.Color(255, 255, 255));
         jbNuevo.setText("NUEVO");
         jbNuevo.setPreferredSize(new java.awt.Dimension(100, 40));
@@ -115,7 +116,7 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         });
 
         jbRegistrar.setBackground(new java.awt.Color(51, 51, 51));
-        jbRegistrar.setFont(new java.awt.Font("Castellar", 1, 18)); // NOI18N
+        jbRegistrar.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         jbRegistrar.setText("REGISTRAR");
         jbRegistrar.setPreferredSize(new java.awt.Dimension(100, 32));
@@ -126,7 +127,7 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setBackground(new java.awt.Color(51, 51, 51));
-        jbSalir.setFont(new java.awt.Font("Castellar", 1, 17)); // NOI18N
+        jbSalir.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jbSalir.setForeground(new java.awt.Color(255, 255, 255));
         jbSalir.setText("SALIR");
         jbSalir.setPreferredSize(new java.awt.Dimension(100, 40));
@@ -137,9 +138,9 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         });
 
         jbModificar.setBackground(new java.awt.Color(51, 51, 51));
-        jbModificar.setFont(new java.awt.Font("Castellar", 1, 18)); // NOI18N
+        jbModificar.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(255, 255, 255));
-        jbModificar.setText("modificar");
+        jbModificar.setText("MODIFICAR");
         jbModificar.setPreferredSize(new java.awt.Dimension(100, 32));
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +149,7 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         });
 
         jbEstado.setBackground(new java.awt.Color(51, 51, 51));
-        jbEstado.setFont(new java.awt.Font("Castellar", 1, 18)); // NOI18N
+        jbEstado.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jbEstado.setForeground(new java.awt.Color(255, 255, 255));
         jbEstado.setText("ESTADO");
         jbEstado.setPreferredSize(new java.awt.Dimension(100, 32));
@@ -163,7 +164,7 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(248, 248, 248)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -175,18 +176,17 @@ public class VistaFormularioAlumnos extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jcbInactivo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(jbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(65, 65, 65)
+                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(69, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
